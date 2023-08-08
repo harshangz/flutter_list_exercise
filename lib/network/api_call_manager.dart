@@ -1,5 +1,6 @@
 
 import 'package:flutter_list_sample/data/list_data.dart';
+import '../utils/utility.dart';
 import 'network_util.dart';
 
 class ApiCallManager {
@@ -11,7 +12,8 @@ class ApiCallManager {
   static const listWireUrl = "$baseUrl/?q=the+wire+characters&format=json";
 
   Future<ListData> getSimsonData() {
-    return _netUtil.get(listSimsonsUrl).then((dynamic res) {
+    final url = (Utility.buildFlavor == "wire") ? listWireUrl :listSimsonsUrl;
+    return _netUtil.get(url).then((dynamic res) {
       print(res.toString());
       return ListData.fromJson(res);
     });

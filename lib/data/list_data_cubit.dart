@@ -28,6 +28,14 @@ class LoadingState extends FlowState {
   List<Object?> get props => [stateRenderType];
 }
 
+class UpdateListState extends FlowState {
+  dynamic res;
+  UpdateListState({this.res});
+
+  @override
+  List<Object?> get props => [res];
+}
+
 class UpdateDetailState extends FlowState {
   final dynamic relatedTopics;
   UpdateDetailState({required this.relatedTopics});
@@ -50,7 +58,7 @@ class ListDataCubit extends Cubit<FlowState> {
       listRelatedTopics.add(element);
     });
 
-    emit(FlowState());
+    emit(UpdateListState(res:res));
   }
 
   updateDetailData(RelatedTopics relatedTopics) {

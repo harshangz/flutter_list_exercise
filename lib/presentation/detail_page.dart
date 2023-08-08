@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_list_sample/utils/Utility.dart';
+import 'package:flutter_list_sample/utils/utility.dart';
 
 import '../data/list_data.dart';
 import '../data/list_data_cubit.dart';
@@ -21,6 +21,9 @@ class _DetailPageState extends State<DetailPage> {
   void initState() {
     super.initState();
     listDataCubit = BlocProvider.of<ListDataCubit>(context);
+    if(widget.relatedTopics != null) {
+      listDataCubit.updateDetailData(widget.relatedTopics!);
+    }
   }
 
   Widget detailWidget() {

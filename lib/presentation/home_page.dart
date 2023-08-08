@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../data/list_data_cubit.dart';
 import '../injection_manager.dart';
-import '../utils/Utility.dart';
+import '../utils/utility.dart';
 import 'detail_page.dart';
 import 'list_page.dart';
 
@@ -27,13 +27,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('The Simpsons characters'),
+        title: Text(Utility.appTitle),
       ),
       body: BlocProvider(
         create: (_) => dataCubit,
         child: BlocBuilder<ListDataCubit,FlowState>(
           builder:(context,state) {
-
+            print("device type :: ${Utility.getDeviceType()}");
           return Center(
             child: (Utility.getDeviceType() == DeviceType.tablet) ? Row(
               children: [
@@ -47,7 +47,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         child: DetailPage()))
               ],
             ) : ListWidget(),
-          );}
+          );
+          }
         ),
       ),
       // floatingActionButton: FloatingActionButton(

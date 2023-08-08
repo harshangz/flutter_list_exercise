@@ -4,7 +4,7 @@ import 'package:flutter_list_sample/data/list_data_cubit.dart';
 import 'package:flutter_list_sample/presentation/detail_page.dart';
 
 import '../data/list_data.dart';
-import '../utils/Utility.dart';
+import '../utils/utility.dart';
 
 class ListWidget extends StatefulWidget {
   const ListWidget({super.key});
@@ -26,7 +26,7 @@ class _ListWidgetState extends State<ListWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ListDataCubit, FlowState>(
-      buildWhen: (prev,curr)=> curr is! UpdateDetailState,
+      buildWhen: (prev,curr)=> curr is UpdateListState,
         builder: (context, state) {
       if (state is LoadingState) {
         return const Center(

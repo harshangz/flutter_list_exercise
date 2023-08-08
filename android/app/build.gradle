@@ -61,6 +61,20 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        simsons {
+            dimension "default"
+            applicationIdSuffix ".simsonsviewer"
+            resValue "string", "app_name", "Simsons character viewer"
+        }
+        wire {
+            dimension "default"
+            applicationIdSuffix ".wireviewer"
+            resValue "string", "app_name", "The Wire character viewer"
+        }
+    }
 }
 
 flutter {

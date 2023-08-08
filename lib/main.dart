@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_list_sample/presentation/home_page.dart';
+import 'package:flutter_list_sample/utils/utility.dart';
 import 'injection_manager.dart' as di;
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await di.init();
+  await Utility.loadProperty();
   runApp(const MyApp());
 }
 
