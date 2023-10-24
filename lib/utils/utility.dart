@@ -15,7 +15,11 @@ class Utility{
   }
 
   static loadProperty() async{
-    buildFlavor = await MethodChannel("build_flavor").invokeMethod<String>("getFlavor");
+    try {
+      buildFlavor = await MethodChannel("build_flavor").invokeMethod<String>("getFlavor");
+    } catch (e) {
+      print(e);
+    }
     print("Flavor ==> $buildFlavor");
     if(buildFlavor == "wire") {
       appTitle = "The wire character viewer";

@@ -36,6 +36,14 @@ class UpdateListState extends FlowState {
   List<Object?> get props => [res];
 }
 
+class FilterSearchListState extends FlowState {
+  dynamic res;
+  FilterSearchListState({this.res});
+
+  @override
+  List<Object?> get props => [res];
+}
+
 class UpdateDetailState extends FlowState {
   final dynamic relatedTopics;
   UpdateDetailState({required this.relatedTopics});
@@ -59,6 +67,10 @@ class ListDataCubit extends Cubit<FlowState> {
     });
 
     emit(UpdateListState(res:res));
+  }
+
+  filterSearchData(List<RelatedTopics> items) {
+    emit(FilterSearchListState(res:items));
   }
 
   updateDetailData(RelatedTopics relatedTopics) {
